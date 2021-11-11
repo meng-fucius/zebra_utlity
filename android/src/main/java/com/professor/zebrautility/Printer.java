@@ -603,11 +603,11 @@ public class Printer implements MethodChannel.MethodCallHandler {
     @Override
     public void onMethodCall(@NonNull final MethodCall call, @NonNull final MethodChannel.Result result) {
         if (call.method.equals("print")) {
-            print(String.valueOf(call.argument("Data")));
+            print((String) call.argument("Data"));
         } else if (call.method.equals("checkPermission")) {
             checkPermission(context, result);
         } else if (call.method.equals("convertBase64ImageToZPLString")) {
-            convertBase64ImageToZPLString(String.valueOf(call.argument("data"))
+            convertBase64ImageToZPLString((String) call.argument("data")
                     , Integer.valueOf(call.argument("rotation").toString()), result);
         } else if (call.method.equals("disconnect")) {
             new Thread(new Runnable() {
