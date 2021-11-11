@@ -640,7 +640,7 @@ public class Printer implements MethodChannel.MethodCallHandler {
                 @Override
                 public void run() {
                     final boolean r = false;
-                    connectToSelectPrinter(String.valueOf(call.argument("Address")).toCharArray());
+                    connectToSelectPrinter((String) call.argument("Address"));
                     ((Activity) context).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -652,7 +652,7 @@ public class Printer implements MethodChannel.MethodCallHandler {
             }).start();
 
         } else if (call.method.equals(("connectToGenericPrinter"))) {
-            connectToGenericPrinter(String.valueOf(call.argument("Address")));
+            connectToGenericPrinter((String) call.argument("Address"));
         } else {
             result.notImplemented();
         }
